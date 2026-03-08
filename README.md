@@ -4,4 +4,4 @@
 
 增加了如下特性：
 
-在Bilibili/Youtub上，可以跳转至任意站内视频而保持原房间，支持bv/link
+在Bilibili/Youtube上，可以跳转至任意站内视频而保持原房间，支持bv/link
