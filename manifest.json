@@ -1,0 +1,91 @@
+﻿{
+    "name":  "VideoTogether_Enhanced",
+    "description":  "Watch video together",
+    "version":  "3.0.23",
+    "manifest_version":  3,
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "\u003call_urls\u003e"
+                                            ],
+                                "js":  [
+                                           "extension.chrome.user.js"
+                                       ],
+                                "all_frames":  true
+                            },
+                            {
+                                "matches":  [
+                                                "\u003call_urls\u003e"
+                                            ],
+                                "js":  [
+                                           "pre.js"
+                                       ],
+                                "run_at":  "document_start",
+                                "all_frames":  true
+                            },
+                            {
+                                "matches":  [
+                                                "\u003call_urls\u003e"
+                                            ],
+                                "js":  [
+                                           "preInjected.js"
+                                       ],
+                                "run_at":  "document_start",
+                                "all_frames":  true,
+                                "world":  "MAIN"
+                            },
+                            {
+                                "matches":  [
+                                                "*://*.bilibili.com/*",
+                                                "*://*.youtube.com/*",
+                                                "*://youtu.be/*"
+                                            ],
+                                "js":  [
+                                           "spa-nav-main.js"
+                                       ],
+                                "run_at":  "document_idle",
+                                "all_frames":  false,
+                                "world":  "MAIN"
+                            },
+                            {
+                                "matches":  [
+                                                "*://*.bilibili.com/*",
+                                                "*://*.youtube.com/*",
+                                                "*://youtu.be/*"
+                                            ],
+                                "js":  [
+                                           "spa-nav-embed.js"
+                                       ],
+                                "run_at":  "document_idle",
+                                "all_frames":  false
+                            }
+                        ],
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "vt.en-us.user.js",
+                                                           "vt.zh-cn.user.js",
+                                                           "vt.ja-jp.user.js",
+                                                           "preInjected.js",
+                                                           "spa-nav-main.js"
+                                                       ],
+                                         "matches":  [
+                                                         "\u003call_urls\u003e"
+                                                     ]
+                                     }
+                                 ],
+    "background":  {
+                       "service_worker":  "background.chrome.js",
+                       "mode":  "module"
+                   },
+    "icons":  {
+                  "192":  "./icon/android-icon-192x192.png"
+              },
+    "permissions":  [
+                        "storage",
+                        "unlimitedStorage"
+                    ],
+    "action":  {
+                   "default_popup":  "popup.html"
+               }
+}
